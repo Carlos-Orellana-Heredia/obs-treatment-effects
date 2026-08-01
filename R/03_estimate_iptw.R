@@ -38,6 +38,6 @@ weight_plot <- ggplot2::ggplot(cohort, ggplot2::aes(x = iptw, fill = strategy)) 
     title = "Distribution of stabilized ATE weights",
     x = "Stabilized IPTW", y = "Number of individuals", fill = "Observed strategy"
   ) +
-  ggplot2::theme_minimal(base_size = 12)
+  ggplot2::theme_classic(base_size = 12)
 ggplot2::ggsave("outputs/weight_distribution.png", weight_plot, width = 8, height = 5, dpi = 300)
 

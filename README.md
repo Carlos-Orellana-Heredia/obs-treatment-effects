@@ -14,10 +14,9 @@ Among eligible individuals with a time-zero baseline assessment, what is the ave
 
 The primary estimand is the ATE at 12 months:
 
-$$
-\mathrm{ATE}_{365} =
-\mathbb{E}\left[Y^{(A)}(365) - Y^{(B)}(365)\right]
-$$
+\[
+E\{Y^{A}(365) - Y^{B}(365)\}.
+\]
 
 The simulation has a known data-generating mechanism, so the analysis can compare an unadjusted estimate, an IPTW estimate, and the known simulation truth.
 

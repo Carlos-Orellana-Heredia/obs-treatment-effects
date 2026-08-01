@@ -86,7 +86,13 @@ longitudinal_outcomes <- tidyr::crossing(
     by = "patient_id"
   ) %>%
   mutate(
-    follow_up_month = follow_up_days / 30,
+    # Use named scheduled visits rather than days / 30, since 365 / 30 is
+    # not exactly 12 and would otherwise become an unintended missing factor.
+    follow_up_month = dplyr::case_when(
+      follow_up_days == 30L ~ 1L,
+      follow_up_days == 180L ~ 6L,
+      follow_up_days == 365L ~ 12L
+    ),
     assessment_observed = dropout_time_days >= follow_up_days |
       (event_observed == 1 & observed_time_days <= follow_up_days),
     event_free = case_when(
@@ -113,4 +119,3 @@ readr::write_csv(longitudinal_outcomes, "data/synthetic_longitudinal_outcomes.cs
 readr::write_csv(simulation_truth, "data/simulation_truth.csv")
 
 message("Synthetic cohort and outcome data written to data/.")
-

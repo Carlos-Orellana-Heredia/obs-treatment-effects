@@ -37,6 +37,6 @@ km_plot <- ggplot2::ggplot(km_data, ggplot2::aes(x = time, y = survival, color =
     title = "IPTW-weighted event-free survival",
     x = "Days from treatment assignment", y = "Event-free probability", color = NULL
   ) +
-  ggplot2::theme_minimal(base_size = 12)
+  ggplot2::theme_classic(base_size = 12)
 ggplot2::ggsave("outputs/weighted_survival_curve.png", km_plot, width = 8, height = 5, dpi = 300)
 

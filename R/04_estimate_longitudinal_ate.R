@@ -5,20 +5,27 @@ outcomes <- readr::read_csv("data/synthetic_longitudinal_outcomes.csv", show_col
 truth <- readr::read_csv("data/simulation_truth.csv", show_col_types = FALSE)
 
 analysis_long <- outcomes %>%
-  inner_join(cohort %>% select(patient_id, strategy, strategy_a, iptw), by = "patient_id") %>%
+  # `outcomes` already contains strategy and strategy_a from the simulation.
+  # Join only IPTW to avoid generating strategy_a.x / strategy_a.y columns.
+  inner_join(cohort %>% select(patient_id, iptw), by = "patient_id") %>%
   filter(!is.na(event_free)) %>%
   mutate(
     follow_up_month = factor(follow_up_month, levels = c(1, 6, 12)),
     id = factor(patient_id)
   )
 
-gee_fit <- geepack::geeglm(
-  event_free ~ strategy_a * follow_up_month,
-  id = id,
-  weights = iptw,
-  family = binomial(),
-  corstr = "exchangeable",
-  data = analysis_long
+# `geeglm()` supports binomial but not quasibinomial. With fractional IPTW,
+# binomial() emits the familiar non-integer-frequency warning; it does not
+# prevent estimation, so suppress it locally rather than changing the family.
+gee_fit <- suppressWarnings(
+  geepack::geeglm(
+    event_free ~ strategy_a * follow_up_month,
+    id = id,
+    weights = iptw,
+    family = binomial(),
+    corstr = "exchangeable",
+    data = analysis_long
+  )
 )
 
 prediction_grid <- tidyr::crossing(
@@ -54,9 +61,8 @@ trajectory_plot <- ggplot2::ggplot(
     subtitle = "Marginal estimates from a weighted GEE model",
     x = "Follow-up month", y = "Estimated event-free probability", color = NULL
   ) +
-  ggplot2::theme_minimal(base_size = 12)
+  ggplot2::theme_classic(base_size = 12)
 ggplot2::ggsave("outputs/adjusted_outcome_trajectory.png", trajectory_plot,
                 width = 8, height = 5, dpi = 300)
 
 message("Known 365-day simulation ATE: ", round(truth$true_value, 3))
-
