@@ -1,0 +1,2 @@
+estimand,true_value,n_patients,seed
+ATE: Strategy A minus Strategy B in 365-day event-free probability,0.050472837304090294,2000,20260801

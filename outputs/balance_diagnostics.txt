@@ -1,0 +1,25 @@
+Balance Measures
+                               Type Diff.Un Diff.Adj    M.Threshold
+prop.score                 Distance  0.6793   0.0161 Balanced, <0.1
+age_10y                     Contin.  0.1920   0.0015 Balanced, <0.1
+comorbidity_burden          Contin.  0.4364   0.0259 Balanced, <0.1
+baseline_severity_low        Binary -0.1265  -0.0017 Balanced, <0.1
+baseline_severity_moderate   Binary  0.0240  -0.0135 Balanced, <0.1
+baseline_severity_high       Binary  0.1025   0.0152 Balanced, <0.1
+prior_intervention           Binary  0.1309  -0.0061 Balanced, <0.1
+anatomical_complexity        Binary  0.0994   0.0189 Balanced, <0.1
+urgent_presentation          Binary  0.0168   0.0038 Balanced, <0.1
+
+Balance tally for mean differences
+                   count
+Balanced, <0.1         9
+Not Balanced, >0.1     0
+
+Variable with the greatest mean difference
+           Variable Diff.Adj    M.Threshold
+ comorbidity_burden   0.0259 Balanced, <0.1
+
+Effective sample sizes
+           Control Treated
+Unadjusted  482.   1518.  
+Adjusted    366.52 1472.23
