@@ -39,6 +39,7 @@ Run the complete workflow with:
 ```r
 source("run_all.R")
 ```
+All `ggplot2` figures use `theme_classic()`.
 
 ## Repository layout
 
