@@ -2,6 +2,9 @@
 
 An end-to-end R workflow for estimating the average treatment effect (ATE) of two treatment strategies from observational longitudinal data.
 
+**Rendered analysis report:**  
+[https://carlos-orellana-heredia.github.io/obs-treatment-effects/](https://carlos-orellana-heredia.github.io/obs-treatment-effects/)
+
 ## Why this project exists
 
 This repository demonstrates a reproducible causal-inference workflow: defining a target estimand, simulating treatment-selection bias, estimating propensity-score weights, checking overlap and covariate balance, and estimating longitudinal and time-to-event outcomes.
