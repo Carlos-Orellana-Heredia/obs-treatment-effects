@@ -46,7 +46,7 @@ docs/     Data-generating process and analytical assumptions
 outputs/  Tables and figures created locally by the workflow
 ```
 
-Generated data and output files are intentionally excluded from version control. Any user can reproduce them by running the simulation with the documented seed.
+Synthetic data and generated outputs are included to make the workflow immediately inspectable. All files can be reproduced by running the analysis scripts with the documented random seed.
 
 ## Causal assumptions
 
