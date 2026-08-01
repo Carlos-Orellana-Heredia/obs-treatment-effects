@@ -69,4 +69,4 @@ This is a portfolio case study, not a clinical recommendation or validation of e
 
 ## Packages
 
-`dplyr`, `tidyr`, `readr`, `ggplot2`, `WeightIt`, `cobalt`, `geepack`, `emmeans`, `survival`, `broom`, and `scales`.
+`dplyr`, `tidyr`, `readr`, `ggplot2`, `WeightIt`, `cobalt`, `geepack`, `emmeans`, `survival`, `broom`, `scales`, `rmarkdown`, and `knitr`.
